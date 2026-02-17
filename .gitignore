@@ -1,0 +1,27 @@
+# --- Python 関連 ---
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+.env
+frontEnd
+
+# --- データベース (Tortoise ORM) ---
+# SQLiteを使用している場合にDBファイルを除外
+*.sqlite3
+*.db
+
+# --- エディタ・開発環境 ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS 関連 ---
+.DS_Store
+Thumbs.db
+
+# --- ログ ---
+*.log
