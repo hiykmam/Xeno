@@ -32,6 +32,4 @@ class Player():
             return self._right_card.card_process(self,opponent,table,deck)
 
     def swap_card(self):
-        n = self._right_card
-        self._right_card = self._left_card
-        self._left_card = n
+        self._right_card, self._left_card = self._left_card, self._right_card

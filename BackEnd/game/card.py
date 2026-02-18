@@ -27,13 +27,7 @@ class _CardBase(ABC): #カード処理の基底クラス
     def card_process(self, owner:Player, opponent:Player, table:Table,deck:Deck) -> dict: #場に出された時の処理。
         pass
 
-    def to_hidden_dict(self):
-        return {
-            "Number":self._num,
-            "Name":self._name,
-            "hidden":True
-        }
-    
+
     def to_show_dict(self):
         return {
             "Number":self._num,
@@ -41,6 +35,12 @@ class _CardBase(ABC): #カード処理の基底クラス
             "hidden":False
         }
 
+class CardBack(_CardBase):
+    def __init__(self):
+        super().__init__(name="裏面",num=0)
+    
+    async def card_process(self, owner, opponent, table, deck):
+        pass
 
 class CardYouth(_CardBase): #少年 2枚目の登場で革命(9番と同じ効果)を起こす。(英雄公開された場合転生)
     def __init__(self):

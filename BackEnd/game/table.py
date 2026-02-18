@@ -4,7 +4,7 @@ if TYPE_CHECKING:
     from game.card import _CardBase
 
 class Table():
-    def __init__(self):
+    def __init__(self): #5で捨てられた場合は、out_card_listに0を、hidden_removal_cardに、本来の値を入れる。
         self._out_card_list_one:list[_CardBase] = [] #分ける必要はまだ見いだせてないけど、描画系の時に分けてると楽だと思う。
         self._out_card_list_two:list[_CardBase] = []
         self.hidden_removal_card:list[_CardBase] = [] #プレイヤーには見せない情報

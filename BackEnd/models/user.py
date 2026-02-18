@@ -14,7 +14,6 @@ class user(models.Model):
     total_wins = fields.IntField(default=0)
     total_games = fields.IntField(default=0)
     recent_histiry = fields.SmallIntField(default=0)
-    current_token = fields.CharField(max_length=255, nullable=True)
     rate = fields.BigIntField(default=0)
 
     class Meta:
