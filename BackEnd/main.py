@@ -7,7 +7,7 @@ import json
 if TYPE_CHECKING:
     from game.card import _CardBase
     from game.table import Table
-    from game.deck import Deck
+    from game.table import Deck
 
 app = Sanic("XenoApp")
 ws_manager = WSARM()
