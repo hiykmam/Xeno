@@ -1,6 +1,6 @@
 from game.card import *
 from game.player import Player
-from game.deck import Deck
+from game.table import Deck
 from game.table import Table
 from typing import TYPE_CHECKING
 

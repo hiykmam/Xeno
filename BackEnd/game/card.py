@@ -7,7 +7,7 @@ import json
 if TYPE_CHECKING:
     from game.player import Player
     from game.table import Table
-    from game.deck import Deck
+    from game.table import Deck
 
 
 class _CardBase(ABC): #カード処理の基底クラス

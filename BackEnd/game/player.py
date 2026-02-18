@@ -6,7 +6,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from game.card import _CardBase
     from game.table import Table
-    from game.deck import Deck
+    from game.table import Deck
 
 class Player():
     def __init__(self,name:str,id:int):
