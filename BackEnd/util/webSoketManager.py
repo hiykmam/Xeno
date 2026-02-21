@@ -51,6 +51,14 @@ class WebScketAllRoundManager:
         except Exception:
             pass
 
+    async def send(self,room_id,user_id,mess:dict):
+        room = self.rooms.get(room_id,None)
+        if room is None:return
+        ws = room["players"][user_id] or room["audiences"][user_id]
+        if ws:
+            message = json.dumps(mess)
+            await self._safe_send(ws,message)
+
     async def remove_connection(self,room_id,user_id):
         async with self.lock:
             if room_id in self.rooms:
