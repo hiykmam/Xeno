@@ -105,7 +105,7 @@
     "player_id":"", #str
 }
 { #死神が除外を行った時の処理
-    "type":"select_action1",
+    "type":"select_action5",
     "room_id":0, #int
     "player_id":"", #str
     "self_trash_card": [], #自分が捨てたカード
@@ -150,7 +150,7 @@
     "player_id":"", #str
 }
 { #皇帝が公開処刑を行った時の処理
-    "type":"select_action1",
+    "type":"select_action9",
     "room_id":0, #int
     "player_id":"", #str
     "trash_card":0, #int 1-10
