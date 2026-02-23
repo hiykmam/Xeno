@@ -32,12 +32,16 @@ class Deck():
         random.shuffle(self.deck)
 
     def draw(self):
-        return self.deck.pop() if self.deck else None
+        return self.deck.pop() if len(self.deck) > 0 else None
     
     def reincarnation_draw(self):
         res = self.reincarnation_card
         self.reincarnation_card = None
         return res
+    
+    @property
+    def possible_sage_draw(self):
+        return len(self.deck) >= 3
 
 
 class Table():
@@ -46,6 +50,14 @@ class Table():
         self._out_card_list_two:list[_CardBase] = []
         self.hidden_removal_card:list[_CardBase] = [] #プレイヤーには見せない情報
     
+    def out_card_number_lists(self,is_player_one:bool=True):
+        one = [n.number for n in self._out_card_list_one]
+        two = [n.number for n in self._out_card_list_two]
+        if is_player_one:
+            return one,two
+        else:
+            return two,one
+
     @property
     def out_card_list_all(self):
         res:list[_CardBase] = []

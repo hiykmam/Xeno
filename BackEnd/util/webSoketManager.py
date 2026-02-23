@@ -12,27 +12,42 @@ class WebScketAllRoundManager:
             cls._instance.lock = asyncio.Lock()
         return cls._instance
     
-    # def __init__(self): #入力支援用の記述終わったらコメントアウトする。
-    #     self.rooms = {}
-    #     self.lock = asyncio.Lock()
+    def __init__(self): #入力支援用の記述終わったらコメントアウトする。
+        self.rooms = {}
+        self.lock = asyncio.Lock()
 
+    def check_num_room_id(self,room_id:int):
+        if 1000000 <= room_id or room_id <= 99999:
+            return True
+        return False
 
-    async def add_connection(self, room_id,user_id,ws,GameSystem,mode="player"):
+    def check_collision_room_id(self,room_id:int):
+        if room_id in self.rooms.keys():
+            return True
+        return False
+
+    async def add_connection(self, room_id:int,user_id,ws,GameSystem,mode="player"):
+        if self.check_num_room_id(room_id):
+            print(f"[WS] Error: Invalid Room ID {room_id}")
+            return False
         async with self.lock:
             if room_id not in self.rooms:
                 self.rooms[room_id] = {"players":{},"audiences":{},"GameSystem":GameSystem} #念のため観戦者のIDも保存する。
-
             if mode == "player":
-                self.rooms[room_id]["players"][user_id] = ws
-                print(f"[WS] Player AddConnection {user_id} joined Room {room_id}")
-            else:
+                if len(self.rooms[room_id]["players"]) < 2:
+                    self.rooms[room_id]["players"][user_id] = ws
+                    print(f"[WS] Player AddConnection {user_id} joined Room {room_id}")
+                    return True
+                else:
+                    mode = "audiences"
+            if mode != "player":
                 self.rooms[room_id]["audiences"][user_id] = ws
                 print(f"[WS] Audiences AddConnection {user_id} joined Room {room_id}")
+                return True
 
     async def broadcast(self,room_id,payload):
         if room_id not in self.rooms:
             return
-        
         message = json.dumps(payload)
         room = self.rooms[room_id]
 
