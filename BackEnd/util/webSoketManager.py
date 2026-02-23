@@ -12,9 +12,9 @@ class WebScketAllRoundManager:
             cls._instance.lock = asyncio.Lock()
         return cls._instance
     
-    def __init__(self): #入力支援用の記述終わったらコメントアウトする。
-        self.rooms = {}
-        self.lock = asyncio.Lock()
+    # def __init__(self): #入力支援用の記述終わったらコメントアウトする。
+    #     self.rooms = {}
+    #     self.lock = asyncio.Lock()
 
     def check_num_room_id(self,room_id:int):
         if 1000000 <= room_id or room_id <= 99999:
