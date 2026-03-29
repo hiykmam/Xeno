@@ -23,7 +23,7 @@ class Player():
         return self._discord_id
 
     async def draw_card(self,deck:Deck,card:_CardBase|None=None):
-        self.auto_swap()
+        await self.auto_swap()
         if self._left_card is None:
             if card is None:
                 self._left_card = deck.draw()
