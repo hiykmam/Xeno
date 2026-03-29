@@ -8,6 +8,7 @@ if TYPE_CHECKING:
 class Deck():
     def __init__(self):
         self.deck:list[_CardBase] = []
+        self.card_pool:list[_CardBase] = []
         self.card_add_deck()
         self.shuffle()
         self.reincarnation_card = self.deck.pop()
